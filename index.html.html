@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitin Baghel | Principal Software Engineer & Microservices Architect</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        slate: {
+                            850: '#111827',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+        
+        /* Print Stylesheet for Resume Generation */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .card-print {
+                border: 1px solid #ccc !important;
+                background: transparent !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+            .text-glow {
+                text-shadow: none !important;
+            }
+            a {
+                text-decoration: underline !important;
+                color: #000 !important;
+            }
+        }
+        
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 no-print transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center font-mono font-bold text-white shadow-lg group-hover:scale-105 transition-transform">
+                    NB
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-slate-100 tracking-tight block leading-none">Nitin Baghel</span>
+                    <span class="text-xs text-brand-500 font-mono">Principal Architect</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-400">
+                <a href="#about" class="hover:text-brand-500 transition-colors">About</a>
+                <a href="#experience" class="hover:text-brand-500 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-brand-500 transition-colors">Tech Stack</a>
+                <a href="#architecture" class="hover:text-brand-500 transition-colors">Capabilities</a>
+                <a href="#contact" class="hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-4 no-print">
+                <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60 text-xs font-semibold transition-all hover:border-brand-500/50">
+                    <i data-lucide="printer" class="w-4 h-4">="text-brand-500"></i>
+                    <span>Print / Save PDF</span>
+                </button>
+                <a href="https://www.linkedin.com/in/nitinbaghel" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold shadow-lg shadow-brand-600/20 transition-all">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    <span>Connect</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-slate-300 hover:text-brand-500 font-medium py-1">About</a>
+            <a href="#experience" class="block text-slate-300 hover:text-brand-500 font-medium py-1">Experience</a>
+            <a href="#skills" class="block text-slate-300 hover:text-brand-500 font-medium py-1">Tech Stack</a>
+            <a href="#architecture" class="block text-slate-300 hover:text-brand-500 font-medium py-1">Capabilities</a>
+            <a href="#contact" class="block text-slate-300 hover:text-brand-500 font-medium py-1">Contact</a>
+            <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
+                <button onclick="window.print()" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800 text-slate-300 text-sm font-semibold">
+                    <i data-lucide="printer" class="w-4 h-4 text-brand-500"></i>
+                    Print / Save PDF
+                </button>
+                <a href="https://www.linkedin.com/in/nitinbaghel" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-20 lg:py-28 overflow-hidden bg-grid-pattern border-b border-slate-800/50">
+            <!-- Radial blur decorations -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-mono font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Available for Senior Technical Leadership & Advisory
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-none mb-4">
+                        Nitin Baghel
+                    </h1>
+                    
+                    <h2 class="text-xl sm:text-2xl font-semibold text-brand-500 font-mono mb-6">
+                        Principal Software Engineer & Microservices Architect
+                    </h2>
+                    
+                    <p class="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 font-normal">
+                        Over <span class="text-slate-100 font-semibold">10+ years</span> of core engineering experience architecting enterprise-grade distributed microservices, multi-tenant cloud platforms, high-throughput event streaming systems, and mission-critical financial backend infrastructure.
+                    </p>
+
+                    <!-- Quick Metrics / Meta Info -->
+                    <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400 mb-10">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>
+                            <span>Noida / Ghaziabad, India</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-brand-500"></i>
+                            <span>10+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="code" class="w-4 h-4 text-brand-500"></i>
+                            <span>Java 21, Spring Boot, Quarkus, Kafka</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 no-print">
+                        <a href="#contact" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-xl shadow-brand-600/25 transition-all hover:scale-[1.02]">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>Contact & Hire</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nitinbaghel" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all hover:scale-[1.02]">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-brand-500"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        <button onclick="window.print()" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-semibold text-sm transition-all">
+                            <i data-lucide="download" class="w-4 h-4 text-slate-400"></i>
+                            <span>Export PDF Resume</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Summary / About Section -->
+        <section id="about" class="py-16 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="flex items-center gap-2 font-mono text-xs text-brand-500 uppercase tracking-widest font-semibold">
+                            <i data-lucide="user" class="w-4 h-4"></i> Executive Summary
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-slate-100">
+                            Designing Scalable Cloud Architectures & Enterprise Systems
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                            I specialize in leading architectural engineering for enterprise software systems, driving modern cloud-native transformations, and delivering robust, resilient microservice architectures. My background spans building distributed platforms for institutional investment banking, real-time risk & compliance management systems, enterprise CRMs, and multi-tenant platforms.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                            With strong domain experience in reactive systems, event streaming with Kafka/Debezium, container orchestration with Kubernetes/OpenShift, and end-to-end telemetry, I ensure high performance, automated continuous delivery, and scalable data platforms.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Cards -->
+                    <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 card-print">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center mb-3">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 mb-1">Architecture Leadership</h4>
+                            <p class="text-xs text-slate-400">Distributed design, domain-driven microservices, event-driven architecture.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 card-print">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-3">
+                                <i data-lucide="layers" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 mb-1">Low Latency Data</h4>
+                            <p class="text-xs text-slate-400">Kafka, Strimzi, CDC via Debezium, PostgreSQL, and high-volume data streams.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 card-print">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-3">
+                                <i data-lucide="cloud" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 mb-1">Cloud & DevOps</h4>
+                            <p class="text-xs text-slate-400">Kubernetes, OpenShift, Argo-CD GitOps, Podman, and Docker containerization.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 card-print">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center mb-3">
+                                <i data-lucide="activity" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 mb-1">Observability & QA</h4>
+                            <p class="text-xs text-slate-400">OpenTelemetry, Micrometer, Prometheus, Datadog, WireMock & Cucumber BDD.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Work Experience Timeline -->
+        <section id="experience" class="py-16 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <div class="flex items-center gap-2 font-mono text-xs text-brand-500 uppercase tracking-widest font-semibold mb-2">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i> Career Pathway
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-slate-100">Work Experience</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2 md:mt-0 font-mono">10+ Years of Enterprise Delivery</p>
+                </div>
+
+                <div class="relative border-l border-slate-800 ml-4 sm:ml-8 space-y-12">
+                    
+                    <!-- Role 1: Brightly Software -->
+                    <div class="relative pl-6 sm:pl-10 group">
+                        <!-- Timeline Node Icon -->
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-brand-500 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                            <i data-lucide="server" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 transition-all card-print">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-100">Principal Software Engineer</h4>
+                                    <span class="text-brand-400 font-semibold text-sm">Brightly Software Pvt. Ltd., Noida</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">
+                                    Dec 2023 – Present
+                                </span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-sm text-slate-300 mb-4 list-disc list-inside leading-relaxed">
+                                <li>Leading architectural design, governance, and end-to-end execution for enterprise-grade distributed microservices and multi-tenant cloud platforms.</li>
+                                <li>Streamlining continuous integration and continuous deployment (CI/CD) pipelines, container orchestration, and automated real-time observability across production deployments.</li>
+                                <li>Refactoring legacy backends to lightweight Quarkus and Spring Boot microservices, improving throughput and lowering compute overhead.</li>
+                                <li>Driving engineering best practices, technical roadmaps, performance tuning, and cross-functional team mentorship.</li>
+                            </ul>
+
+                            <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Java 21</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Spring Boot</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Quarkus</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Kubernetes</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Kafka</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Argo-CD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role 2: Iris Software -->
+                    <div class="relative pl-6 sm:pl-10 group">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-indigo-500 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 transition-all card-print">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-100">Team Lead</h4>
+                                    <span class="text-indigo-400 font-semibold text-sm">Iris Software Pvt. Ltd., Noida</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">
+                                    Dec 2021 – Dec 2023
+                                </span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-sm text-slate-300 mb-4 list-disc list-inside leading-relaxed">
+                                <li>Directed core backend engineering for institutional investment banking products, managing high-concurrency transactional systems.</li>
+                                <li>Owned the end-to-end modernization of financial risk management and compliance modules with strict auditability and high availability requirements.</li>
+                                <li>Architected event-driven workflows leveraging Apache Kafka, Strimzi, and Debezium for reliable change data capture (CDC).</li>
+                                <li>Mentored developers, conducted technical code reviews, and enforced Cucumber BDD and automated testing standards.</li>
+                            </ul>
+
+                            <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Java</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Spring Boot</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Apache Camel</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Kafka / Debezium</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">OpenShift</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Prometheus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role 3: Denave India -->
+                    <div class="relative pl-6 sm:pl-10 group">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-emerald-500 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                            <i data-lucide="code-2" class="w-4 h-4"></i>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 transition-all card-print">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-100">Lead cum Developer</h4>
+                                    <span class="text-emerald-400 font-semibold text-sm">Denave India Pvt. Ltd., Noida</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">
+                                    Aug 2016 – Dec 2021
+                                </span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-sm text-slate-300 mb-4 list-disc list-inside leading-relaxed">
+                                <li>Architected and implemented core enterprise platforms including Data Management Systems, custom CRM solutions, and HRMS applications.</li>
+                                <li>Designed complex database schemas and query optimizations for PostgreSQL and Oracle environments to optimize enterprise reporting.</li>
+                                <li>Engineered reusable integration components using Apache Camel and Spring Hibernate ORM layers.</li>
+                                <li>Progressed from Core Developer to Lead role, taking complete ownership of platform scalability and client deliverables.</li>
+                            </ul>
+
+                            <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Java 8/11</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Spring Boot</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Hibernate ORM</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">PostgreSQL</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Oracle</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800/80 text-slate-300">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Technical Skills & Stack Grid -->
+        <section id="skills" class="py-16 border-b border-slate-800/50 bg-slate-900/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                    <div>
+                        <div class="flex items-center gap-2 font-mono text-xs text-brand-500 uppercase tracking-widest font-semibold mb-2">
+                            <i data-lucide="terminal" class="w-4 h-4"></i> Core Stack & Mastery
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-slate-100">Technical Expertise</h3>
+                    </div>
+
+                    <!-- Skills Filter Buttons -->
+                    <div id="skills-filter" class="flex flex-wrap gap-2 mt-4 md:mt-0 no-print">
+                        <button data-filter="all" class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-brand-600 text-white transition-all">All Skills</button>
+                        <button data-filter="languages" class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800 text-slate-400 hover:text-white transition-all">Languages & Frameworks</button>
+                        <button data-filter="data" class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800 text-slate-400 hover:text-white transition-all">Streaming & Data</button>
+                        <button data-filter="cloud" class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800 text-slate-400 hover:text-white transition-all">Cloud & DevOps</button>
+                        <button data-filter="testing" class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800 text-slate-400 hover:text-white transition-all">Observability & QA</button>
+                    </div>
+                </div>
+
+                <!-- Skill Categories Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- Languages & Frameworks -->
+                    <div class="skill-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 card-print" data-category="languages">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-500">
+                                <i data-lucide="code" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 text-base">Languages & Frameworks</h4>
+                        </div>
+                        <ul class="space-y-2 font-mono text-sm">
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Java (8 to 21)</span>
+                                <span class="text-xs text-brand-400">Expert</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Spring Boot</span>
+                                <span class="text-xs text-brand-400">Expert</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Quarkus</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Apache Camel</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Hibernate ORM</span>
+                                <span class="text-xs text-brand-400">Expert</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Streaming & Databases -->
+                    <div class="skill-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 card-print" data-category="data">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400">
+                                <i data-lucide="database" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 text-base">Streaming & Databases</h4>
+                        </div>
+                        <ul class="space-y-2 font-mono text-sm">
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Apache Kafka</span>
+                                <span class="text-xs text-emerald-400">Expert</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>PostgreSQL</span>
+                                <span class="text-xs text-emerald-400">Expert</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Oracle DB</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Strimzi</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Debezium (CDC)</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Cloud & Infrastructure -->
+                    <div class="skill-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 card-print" data-category="cloud">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400">
+                                <i data-lucide="cloud-lightning" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 text-base">Cloud & DevOps</h4>
+                        </div>
+                        <ul class="space-y-2 font-mono text-sm">
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Kubernetes</span>
+                                <span class="text-xs text-indigo-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>OpenShift</span>
+                                <span class="text-xs text-indigo-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Docker / Podman</span>
+                                <span class="text-xs text-indigo-400">Expert</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Argo-CD</span>
+                                <span class="text-xs text-slate-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>CI/CD Pipelines</span>
+                                <span class="text-xs text-indigo-400">Expert</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Observability & Testing -->
+                    <div class="skill-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 card-print" data-category="testing">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-200 text-base">Observability & QA</h4>
+                        </div>
+                        <ul class="space-y-2 font-mono text-sm">
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>OpenTelemetry</span>
+                                <span class="text-xs text-purple-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Micrometer / Prom</span>
+                                <span class="text-xs text-purple-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>Datadog / Grafana</span>
+                                <span class="text-xs text-purple-400">Advanced</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>HashiCorp Vault</span>
+                                <span class="text-xs text-slate-400">Intermediate</span>
+                            </li>
+                            <li class="flex items-center justify-between text-slate-300">
+                                <span>JUnit 5 / Cucumber</span>
+                                <span class="text-xs text-purple-400">Expert</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture & Leadership Capabilities -->
+        <section id="architecture" class="py-16 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <div class="flex items-center gap-2 font-mono text-xs text-brand-500 uppercase tracking-widest font-semibold mb-2">
+                        <i data-lucide="sliders" class="w-4 h-4"></i> System Design Focus
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-100">Architectural Leadership & Pillars</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-500/40 transition-all card-print">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center mb-5">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-100 mb-2">Distributed Microservices</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Architecting resilient, loosely coupled microservices utilizing Domain-Driven Design (DDD), pattern-driven inter-service communication, and secure REST/gRPC interfaces.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-500/40 transition-all card-print">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5">
+                            <i data-lucide="git-merge" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-100 mb-2">Event-Driven Architecture</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Implementing reliable real-time event distribution with Apache Kafka and CDC via Debezium, ensuring eventual consistency, zero data loss, and high fault-tolerance.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-500/40 transition-all card-print">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+                            <i data-lucide="eye" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-100 mb-2">Zero-Trust Telemetry</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Establishing end-to-end distributed tracing, Prometheus metrics dashboards, Datadog monitoring, and secret management via HashiCorp Vault across clusters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Connect Section -->
+        <section id="contact" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-800 relative overflow-hidden glow-effect card-print">
+                    
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-mono mb-4">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                                Get in Touch
+                            </div>
+                            <h3 class="text-3xl font-extrabold text-slate-100 tracking-tight mb-4">
+                                Let’s Discuss Your Next Enterprise Platform
+                            </h3>
+                            <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                                Looking for senior technical leadership, distributed system consultation, or microservices architecture modernization? Reach out directly via LinkedIn or send a message.
+                            </p>
+
+                            <div class="space-y-3 font-mono text-sm">
+                                <div class="flex items-center gap-3 text-slate-300">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-brand-500"></i>
+                                    <span>Noida / Ghaziabad, Uttar Pradesh, India</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-slate-300">
+                                    <i data-lucide="linkedin" class="w-4 h-4 text-brand-500"></i>
+                                    <a href="https://www.linkedin.com/in/nitinbaghel" target="_blank" rel="noopener noreferrer" class="hover:underline text-brand-400">
+                                        linkedin.com/in/nitinbaghel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Quick Message Modal Trigger / Card -->
+                        <div class="bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 no-print">
+                            <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">YOUR NAME / COMPANY</label>
+                                    <input type="text" required placeholder="e.g. Hiring Manager at Tech Corp" class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">EMAIL ADDRESS</label>
+                                    <input type="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">MESSAGE / PROJECT DETAILS</label>
+                                    <textarea rows="3" required placeholder="I am interested in recruiting/consulting for..." class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:border-brand-500 resize-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                    <span>Send Quick Inquiry</span>
+                                </button>
+                            </form>
+                            <div id="form-feedback" class="hidden mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono text-center">
+                                Thank you! Message registered. Please connect on LinkedIn for immediate response.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="font-bold text-slate-300 text-sm">Nitin Baghel</span>
+                <span class="text-slate-600">|</span>
+                <span class="text-xs text-slate-500 font-mono">Principal Software Engineer</span>
+            </div>
+            <div class="text-xs text-slate-500 font-mono">
+                © <span id="year"></span> Nitin Baghel. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set Current Year in Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Tech Skills Filtering Logic
+        const filterButtons = document.querySelectorAll('#skills-filter button');
+        const skillCards = document.querySelectorAll('.skill-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white');
+                    b.classList.add('bg-slate-800', 'text-slate-400');
+                });
+
+                // Add active styling to clicked button
+                btn.classList.remove('bg-slate-800', 'text-slate-400');
+                btn.classList.add('bg-brand-600', 'text-white');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                skillCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Handle Contact Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            const form = document.getElementById('contact-form');
+            feedback.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
